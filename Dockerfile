@@ -1,6 +1,9 @@
 FROM php:7.0-apache
 MAINTAINER Jean Blanchard <jean@blanchard.io>
 
+# Install Lychee
+ENV LYCHEE_VERSION v3.1.5
+
 # Configure php & dependencies
 RUN apt-get update &&\
   apt-get install -y zlib1g-dev libfreetype6-dev libjpeg62-turbo-dev libpng12-dev libmagickwand-dev &&\
@@ -11,9 +14,6 @@ RUN apt-get update &&\
   pecl install imagick &&\
   docker-php-ext-enable imagick
 ADD conf/php.ini /usr/local/etc/php/
-
-# Install Lychee
-ENV LYCHEE_VERSION v3.1.4
 
 RUN curl -L https://github.com/electerious/Lychee/archive/${LYCHEE_VERSION}.tar.gz | tar -xzf - --strip 1 &&\
   chown -R www-data:www-data /var/www/html &&\
