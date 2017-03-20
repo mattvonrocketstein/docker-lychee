@@ -2,7 +2,7 @@ FROM php:7.0-apache
 MAINTAINER Jean Blanchard <jean@blanchard.io>
 
 # Install Lychee
-ENV LYCHEE_VERSION v3.1.5
+ENV LYCHEE_VERSION v3.1.6
 
 # Configure php & dependencies
 RUN apt-get update &&\
