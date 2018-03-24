@@ -9,6 +9,8 @@ services:
     volumes:
       - ./uploads:/uploads
       - ./data:/data
+    depends_on:
+      - lychee-mysql
 
   lychee-mysql:
     image: mysql
@@ -19,13 +21,3 @@ services:
       MYSQL_PASSWORD: lychee
     volumes:
        - ./db:/var/lib/mysql
-
-  # mysql:
-  #   image: mysql
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: lychee
-  #     MYSQL_DATABASE: lychee
-  #     MYSQL_USER: lychee
-  #     MYSQL_PASSWORD: lychee
-  #   volumes:
-  #      - ./db:/var/lib/mysql
