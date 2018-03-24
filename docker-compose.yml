@@ -1,0 +1,31 @@
+version: '2'
+services:
+  lychee:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:80
+    volumes:
+      - ./uploads:/uploads
+      - ./data:/data
+
+  lychee-mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: lychee
+      MYSQL_DATABASE: lychee
+      MYSQL_USER: lychee
+      MYSQL_PASSWORD: lychee
+    volumes:
+       - ./db:/var/lib/mysql
+
+  # mysql:
+  #   image: mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: lychee
+  #     MYSQL_DATABASE: lychee
+  #     MYSQL_USER: lychee
+  #     MYSQL_PASSWORD: lychee
+  #   volumes:
+  #      - ./db:/var/lib/mysql
